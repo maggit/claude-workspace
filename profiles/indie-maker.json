@@ -1,0 +1,16 @@
+{
+  "name": "indie-maker",
+  "description": "Solo builders — lean planning, shipping, and iteration",
+  "skills": [
+    "prd.md",
+    "todo.md",
+    "summary.md",
+    "release-plan.md"
+  ],
+  "templates": [
+    "PRD_TEMPLATE.md",
+    "DECISION_RECORD_TEMPLATE.md",
+    "PROJECT_INDEX_TEMPLATE.md"
+  ],
+  "claudeMdTemplate": "indie-maker.md"
+}

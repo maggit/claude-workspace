@@ -1,0 +1,25 @@
+node_modules/
+dist/
+*.tgz
+
+# Build artifacts (copied assets)
+packages/cli/assets/skills/
+packages/cli/assets/templates/
+packages/cli/assets/profiles/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+
+# Backup files created by --force
+*.bak.*

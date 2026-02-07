@@ -1,0 +1,23 @@
+{
+  "name": "default",
+  "description": "Full workspace with all skills and templates",
+  "skills": [
+    "prd.md",
+    "eng-spec.md",
+    "requirements.md",
+    "todo.md",
+    "summary.md",
+    "meeting-notes.md",
+    "release-plan.md",
+    "seo-brief.md",
+    "landing-page-copy.md"
+  ],
+  "templates": [
+    "PRD_TEMPLATE.md",
+    "ENG_SPEC_TEMPLATE.md",
+    "DECISION_RECORD_TEMPLATE.md",
+    "WEEKLY_REVIEW_TEMPLATE.md",
+    "PROJECT_INDEX_TEMPLATE.md"
+  ],
+  "claudeMdTemplate": "default.md"
+}

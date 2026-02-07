@@ -1,0 +1,22 @@
+{
+  "name": "claude-workstation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dotfiles for Claude — scaffold Claude workspaces into any project",
+  "license": "MIT",
+  "author": "Raquel Hernandez",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raquelhernandez/claude-workstation.git"
+  },
+  "homepage": "https://github.com/raquelhernandez/claude-workstation",
+  "scripts": {
+    "build": "node scripts/copy-assets.js && pnpm -r build",
+    "test": "pnpm -r test",
+    "clean": "rm -rf packages/cli/dist packages/cli/assets/skills packages/cli/assets/templates packages/cli/assets/profiles"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

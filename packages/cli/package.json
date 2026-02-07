@@ -1,0 +1,56 @@
+{
+  "name": "@claude-workstation/cli",
+  "version": "0.1.0",
+  "description": "CLI tool to scaffold Claude workspaces into any project",
+  "type": "module",
+  "license": "MIT",
+  "author": "Raquel Hernandez",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raquelhernandez/claude-workstation.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/raquelhernandez/claude-workstation",
+  "keywords": [
+    "claude",
+    "ai",
+    "workspace",
+    "scaffold",
+    "markdown",
+    "llm",
+    "cli",
+    "dotfiles",
+    "context",
+    "templates"
+  ],
+  "bin": {
+    "claude-workstation": "./dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.1.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.14.0",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

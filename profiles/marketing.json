@@ -1,0 +1,17 @@
+{
+  "name": "marketing",
+  "description": "Content and marketing — copy, SEO, and communication",
+  "skills": [
+    "prd.md",
+    "seo-brief.md",
+    "landing-page-copy.md",
+    "summary.md",
+    "meeting-notes.md"
+  ],
+  "templates": [
+    "PRD_TEMPLATE.md",
+    "WEEKLY_REVIEW_TEMPLATE.md",
+    "PROJECT_INDEX_TEMPLATE.md"
+  ],
+  "claudeMdTemplate": "marketing.md"
+}

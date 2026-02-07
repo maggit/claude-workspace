@@ -1,0 +1,19 @@
+{
+  "name": "engineering-exec",
+  "description": "Engineering leadership — specs, planning, and requirements",
+  "skills": [
+    "prd.md",
+    "eng-spec.md",
+    "requirements.md",
+    "todo.md",
+    "release-plan.md"
+  ],
+  "templates": [
+    "PRD_TEMPLATE.md",
+    "ENG_SPEC_TEMPLATE.md",
+    "DECISION_RECORD_TEMPLATE.md",
+    "WEEKLY_REVIEW_TEMPLATE.md",
+    "PROJECT_INDEX_TEMPLATE.md"
+  ],
+  "claudeMdTemplate": "engineering-exec.md"
+}

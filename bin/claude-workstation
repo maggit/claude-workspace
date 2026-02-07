@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# claude-workstation — Option C install wrapper
+# Usage: Clone the repo, then run: ./bin/claude-workstation <command>
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+CLI_BIN="$REPO_ROOT/packages/cli/dist/bin.js"
+
+if [ ! -f "$CLI_BIN" ]; then
+  echo "Error: CLI not built. Run 'pnpm build' from the repo root first."
+  exit 1
+fi
+
+exec node "$CLI_BIN" "$@"
