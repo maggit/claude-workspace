@@ -187,7 +187,7 @@ See [docs/customization.md](docs/customization.md) for:
 
 ## ContextLoom
 
-Claude Workstation is designed to work with [ContextLoom](https://contextloom.com), a Markdown editor for managing project context. The vault taxonomy and file conventions are fully compatible. See [docs/contextloom.md](docs/contextloom.md) for details.
+Claude Workstation is designed to work with [ContextLoom](https://contextloom.app), a Markdown editor for managing project context. The vault taxonomy and file conventions are fully compatible. See [docs/contextloom.md](docs/contextloom.md) for details.
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 # ContextLoom Compatibility
 
-[ContextLoom](https://contextloom.com) is a Markdown editor designed for organizing project context. Claude Workstation workspaces are fully compatible with ContextLoom.
+[ContextLoom](https://contextloom.app) is a Markdown editor designed for organizing project context. Claude Workstation workspaces are fully compatible with ContextLoom.
 
 ## How They Work Together
 
