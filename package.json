@@ -1,6 +1,6 @@
 {
   "name": "claude-workspace",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "type": "module",
   "description": "Dotfiles for Claude — scaffold Claude workspaces into any project",
