@@ -1,4 +1,9 @@
-# Skill: SEO Content Brief
+---
+name: seo-brief
+description: "Generate an SEO content brief. Use when the user says /seo-brief, asks to create an SEO brief, plan content for search, or optimize content strategy. Triggers: seo-brief, seo brief, seo content, content brief, keyword targeting, search optimization, content strategy."
+---
+
+# SEO Content Brief
 
 ## Purpose
 

@@ -1,4 +1,9 @@
-# Skill: Landing Page Copy
+---
+name: landing-page-copy
+description: "Write landing page copy. Use when the user says /landing-page-copy, asks to write landing page content, create conversion copy, or draft page copy for a product or service. Triggers: landing-page-copy, landing page, conversion copy, page copy, hero copy, sales page, marketing copy."
+---
+
+# Landing Page Copy
 
 ## Purpose
 

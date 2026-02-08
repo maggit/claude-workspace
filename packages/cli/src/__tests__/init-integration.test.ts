@@ -130,13 +130,13 @@ describe("init integration", () => {
     // marketing profile should have seo-brief
     expect(
       await fs.pathExists(
-        path.join(tmpDir, CLAUDE_DIR, "skills", "seo-brief.md"),
+        path.join(tmpDir, CLAUDE_DIR, "skills", "seo-brief", "SKILL.md"),
       ),
     ).toBe(true);
     // but not eng-spec
     expect(
       await fs.pathExists(
-        path.join(tmpDir, CLAUDE_DIR, "skills", "eng-spec.md"),
+        path.join(tmpDir, CLAUDE_DIR, "skills", "eng-spec", "SKILL.md"),
       ),
     ).toBe(false);
   });

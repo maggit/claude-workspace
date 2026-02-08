@@ -13,22 +13,22 @@ describe("profiles", () => {
   it("loads engineering-exec profile", async () => {
     const profile = await loadProfile("engineering-exec");
     expect(profile.name).toBe("engineering-exec");
-    expect(profile.skills).toContain("eng-spec.md");
-    expect(profile.skills).not.toContain("seo-brief.md");
+    expect(profile.skills).toContain("eng-spec");
+    expect(profile.skills).not.toContain("seo-brief");
   });
 
   it("loads indie-maker profile", async () => {
     const profile = await loadProfile("indie-maker");
     expect(profile.name).toBe("indie-maker");
-    expect(profile.skills).toContain("prd.md");
-    expect(profile.skills).toContain("todo.md");
+    expect(profile.skills).toContain("prd");
+    expect(profile.skills).toContain("todo");
   });
 
   it("loads marketing profile", async () => {
     const profile = await loadProfile("marketing");
     expect(profile.name).toBe("marketing");
-    expect(profile.skills).toContain("seo-brief.md");
-    expect(profile.skills).toContain("landing-page-copy.md");
+    expect(profile.skills).toContain("seo-brief");
+    expect(profile.skills).toContain("landing-page-copy");
   });
 
   it("throws on unknown profile", async () => {

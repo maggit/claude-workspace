@@ -1,4 +1,9 @@
-# Skill: Meeting Notes
+---
+name: meeting-notes
+description: "Create structured meeting notes. Use when the user says /meeting-notes, asks to organize meeting notes, structure a meeting transcript, or document a meeting. Triggers: meeting-notes, meeting notes, meeting recap, meeting summary, organize notes, document meeting."
+---
+
+# Meeting Notes
 
 ## Purpose
 

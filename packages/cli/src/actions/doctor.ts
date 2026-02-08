@@ -57,16 +57,16 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
     try {
       const profile = await loadProfile(config.profile);
 
-      // Check skills
+      // Check skills (each skill is a <name>/SKILL.md directory)
       let allSkillsPresent = true;
       for (const skill of profile.skills) {
-        const skillPath = path.join(claudeDir, "skills", skill);
+        const skillPath = path.join(claudeDir, "skills", skill, "SKILL.md");
         if (!(await fileExists(skillPath))) {
           allSkillsPresent = false;
           checks.push({
             name: `skill: ${skill}`,
             passed: false,
-            message: `Missing skill file: .claude/skills/${skill}`,
+            message: `Missing skill: .claude/skills/${skill}/SKILL.md`,
             fix: `Run 'claude-workstation init --force' to restore missing files`,
           });
         }
@@ -75,7 +75,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
         checks.push({
           name: "skill files",
           passed: true,
-          message: `All ${profile.skills.length} skill files present`,
+          message: `All ${profile.skills.length} skills present`,
         });
       }
 

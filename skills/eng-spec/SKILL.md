@@ -1,4 +1,9 @@
-# Skill: Engineering Specification
+---
+name: eng-spec
+description: "Generate an Engineering Specification. Use when the user says /eng-spec, asks to create a technical spec, engineering spec, system design document, or translate a PRD into a technical plan. Triggers: eng-spec, engineering spec, technical spec, system design, technical design, architecture spec."
+---
+
+# Engineering Specification
 
 ## Purpose
 

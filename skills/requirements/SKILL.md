@@ -1,4 +1,9 @@
-# Skill: Requirements Gathering
+---
+name: requirements
+description: "Gather and structure requirements from raw input. Use when the user says /requirements, asks to extract requirements, organize requirements from notes, or formalize feature requirements. Triggers: requirements, gather requirements, extract requirements, requirements doc, formalize requirements."
+---
+
+# Requirements Gathering
 
 ## Purpose
 

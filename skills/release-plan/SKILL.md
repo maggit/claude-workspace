@@ -1,4 +1,9 @@
-# Skill: Release Plan
+---
+name: release-plan
+description: "Create a release plan. Use when the user says /release-plan, asks to plan a release, create a rollout strategy, or document a deployment plan. Triggers: release-plan, release plan, rollout plan, deployment plan, launch plan, ship plan."
+---
+
+# Release Plan
 
 ## Purpose
 

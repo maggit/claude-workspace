@@ -1,4 +1,9 @@
-# Skill: Summary / Recap
+---
+name: summary
+description: "Generate a summary or recap of content. Use when the user says /summary, asks to summarize a document, recap a session, create an executive summary, or distill information. Triggers: summary, recap, summarize, executive summary, tldr, distill, key takeaways."
+---
+
+# Summary / Recap
 
 ## Purpose
 

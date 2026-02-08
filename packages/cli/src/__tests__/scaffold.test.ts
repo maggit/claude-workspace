@@ -34,7 +34,7 @@ describe("scaffold-claude-dir", () => {
     await scaffoldClaudeDir(tmpDir, profile, { force: false, dryRun: false }, null);
 
     for (const skill of profile.skills) {
-      const skillPath = path.join(tmpDir, ".claude", "skills", skill);
+      const skillPath = path.join(tmpDir, ".claude", "skills", skill, "SKILL.md");
       expect(await fs.pathExists(skillPath)).toBe(true);
       const content = await fs.readFile(skillPath, "utf-8");
       expect(content.length).toBeGreaterThan(0);
@@ -103,12 +103,12 @@ describe("scaffold-claude-dir", () => {
     // marketing should have seo-brief but not eng-spec
     expect(
       await fs.pathExists(
-        path.join(tmpDir, ".claude", "skills", "seo-brief.md"),
+        path.join(tmpDir, ".claude", "skills", "seo-brief", "SKILL.md"),
       ),
     ).toBe(true);
     expect(
       await fs.pathExists(
-        path.join(tmpDir, ".claude", "skills", "eng-spec.md"),
+        path.join(tmpDir, ".claude", "skills", "eng-spec", "SKILL.md"),
       ),
     ).toBe(false);
   });

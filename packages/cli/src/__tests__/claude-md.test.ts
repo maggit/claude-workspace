@@ -30,7 +30,7 @@ describe("claude-md", () => {
     it("includes skill instructions", async () => {
       const profile = await loadProfile("default");
       const content = await generateClaudeMdContent(profile, "ContextDB");
-      expect(content).toContain("prd.md");
+      expect(content).toContain("`prd`");
       expect(content).toContain(".claude/skills/");
     });
 

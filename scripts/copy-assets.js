@@ -7,7 +7,7 @@
  * Copies: skills/, templates/, profiles/ → packages/cli/assets/
  */
 
-import { cpSync, mkdirSync, existsSync } from "node:fs";
+import { cpSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -31,6 +31,9 @@ for (const { src, dest } of copies) {
     continue;
   }
 
+  if (existsSync(destPath)) {
+    rmSync(destPath, { recursive: true });
+  }
   mkdirSync(destPath, { recursive: true });
   cpSync(srcPath, destPath, { recursive: true });
   console.log(`Copied ${src}/ → packages/cli/assets/${dest}/`);

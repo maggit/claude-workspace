@@ -1,4 +1,9 @@
-# Skill: Product Requirements Document (PRD)
+---
+name: prd
+description: "Generate a Product Requirements Document. Use when the user says /prd, asks to create a PRD, define product requirements, or spec out a feature. Triggers: prd, product requirements, product spec, feature spec, requirements document."
+---
+
+# Product Requirements Document (PRD)
 
 ## Purpose
 

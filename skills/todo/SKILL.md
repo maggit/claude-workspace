@@ -1,4 +1,9 @@
-# Skill: Task Breakdown
+---
+name: todo
+description: "Break down a project into actionable tasks. Use when the user says /todo, asks to create a task breakdown, decompose a feature into tasks, or plan work items. Triggers: todo, task breakdown, break down, decompose, work items, sprint planning, task list."
+---
+
+# Task Breakdown
 
 ## Purpose
 

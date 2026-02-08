@@ -2,11 +2,21 @@
   "name": "marketing",
   "description": "Content and marketing — copy, SEO, and communication",
   "skills": [
-    "prd.md",
-    "seo-brief.md",
-    "landing-page-copy.md",
-    "summary.md",
-    "meeting-notes.md"
+    "prd",
+    "summary",
+    "meeting-notes",
+    "seo-brief",
+    "landing-page-copy",
+    "commit",
+    "completetodo",
+    "createtodo",
+    "envcheck",
+    "explain",
+    "openpr",
+    "opentodos",
+    "readme",
+    "standup",
+    "storecontext"
   ],
   "templates": [
     "PRD_TEMPLATE.md",

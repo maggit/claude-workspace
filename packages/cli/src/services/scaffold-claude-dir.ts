@@ -39,12 +39,21 @@ export async function scaffoldClaudeDir(
     }
   }
 
-  // Copy skill files
+  // Copy skill directories (each skill is a <name>/SKILL.md)
   const skillsSrcDir = getSkillsDir();
-  for (const skillFile of profile.skills) {
-    const srcPath = path.join(skillsSrcDir, skillFile);
-    const destPath = path.join(claudeDir, "skills", skillFile);
-    const relativePath = path.join(CLAUDE_DIR, "skills", skillFile);
+  for (const skillName of profile.skills) {
+    const srcPath = path.join(skillsSrcDir, skillName, "SKILL.md");
+    const destDir = path.join(claudeDir, "skills", skillName);
+    const destPath = path.join(destDir, "SKILL.md");
+    const relativePath = path.join(CLAUDE_DIR, "skills", skillName, "SKILL.md");
+
+    if (options.dryRun) {
+      if (!(await fileExists(destDir))) {
+        log.dryRun(`Would create directory: ${CLAUDE_DIR}/skills/${skillName}/`);
+      }
+    } else {
+      await fs.ensureDir(destDir);
+    }
 
     const result = await copyManagedFile(
       srcPath,
