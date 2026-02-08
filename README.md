@@ -6,18 +6,61 @@ Claude Workspace sets up everything you need to work effectively with Claude: a 
 
 ---
 
-## Quick Start
+## Installation
+
+### npx (no install needed)
+
+Run commands directly with `npx`:
 
 ```bash
 npx @maggit/claude-workspace init
+npx @maggit/claude-workspace doctor
+npx @maggit/claude-workspace add-skill prd
 ```
 
-That's it. You'll be prompted to pick a profile and vault name, and your workspace is ready.
+### Global install (gives you the `cws` command)
+
+```bash
+npm install -g @maggit/claude-workspace
+```
+
+Once installed globally, you can use the shorter `cws` command:
+
+```bash
+cws init
+cws doctor
+cws add-skill prd
+```
+
+### From source
+
+```bash
+git clone https://github.com/maggit/claude-workspace.git
+cd claude-workspace
+pnpm install && pnpm build
+node packages/cli/dist/bin.js init --dir ~/my-project
+```
+
+> **Note:** The rest of this README uses `cws` for brevity. If you haven't installed globally, replace `cws` with `npx @maggit/claude-workspace`.
+
+---
+
+## Quick Start
+
+```bash
+# With npx
+npx @maggit/claude-workspace init
+
+# Or, if installed globally
+cws init
+```
+
+You'll be prompted to pick a profile and vault name, and your workspace is ready.
 
 For non-interactive setup:
 
 ```bash
-npx @maggit/claude-workspace init --profile engineering-exec --yes
+cws init --profile engineering-exec --yes
 ```
 
 ## What You Get
@@ -156,30 +199,6 @@ Preview the CLAUDE.md content for a profile without writing any files:
 
 ```bash
 cws print-claude-md --profile indie-maker
-```
-
-## Installation
-
-### npx (recommended)
-
-```bash
-npx @maggit/claude-workspace init
-```
-
-### Global install
-
-```bash
-npm install -g @maggit/claude-workspace
-cws init
-```
-
-### Clone and run
-
-```bash
-git clone https://github.com/raquelhernandez/claude-workstation.git
-cd claude-workstation
-pnpm install && pnpm build
-node packages/cli/dist/bin.js init --dir ~/my-project
 ```
 
 ## Idempotency
