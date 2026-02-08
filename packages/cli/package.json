@@ -1,16 +1,16 @@
 {
   "name": "@maggit/claude-workspace",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "CLI tool to scaffold Claude workspaces into any project",
   "type": "module",
   "license": "MIT",
   "author": "Raquel Hernandez",
   "repository": {
     "type": "git",
-    "url": "https://github.com/raquelhernandez/claude-workstation.git",
+    "url": "https://github.com/maggit/claude-workspace.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/raquelhernandez/claude-workstation",
+  "homepage": "https://github.com/maggit/claude-workspace",
   "keywords": [
     "claude",
     "ai",
