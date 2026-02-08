@@ -27,7 +27,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
     message: claudeDirExists
       ? ".claude/ directory exists"
       : ".claude/ directory not found",
-    fix: "Run 'claude-workstation init' to create the workspace",
+    fix: "Run 'cws init' to create the workspace",
   });
 
   // 2. config.json valid
@@ -38,7 +38,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
     message: config
       ? `config.json valid (profile: ${config.profile})`
       : "config.json missing or invalid",
-    fix: "Run 'claude-workstation init' to regenerate config",
+    fix: "Run 'cws init' to regenerate config",
   });
 
   // 3. active.json exists
@@ -49,7 +49,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
     message: active
       ? `active.json present (profile: ${active.profile})`
       : "active.json missing",
-    fix: "Run 'claude-workstation init' to regenerate active profile",
+    fix: "Run 'cws init' to regenerate active profile",
   });
 
   // 4. Check skill and template files
@@ -67,7 +67,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
             name: `skill: ${skill}`,
             passed: false,
             message: `Missing skill: .claude/skills/${skill}/SKILL.md`,
-            fix: `Run 'claude-workstation init --force' to restore missing files`,
+            fix: `Run 'cws init --force' to restore missing files`,
           });
         }
       }
@@ -89,7 +89,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
             name: `template: ${tmpl}`,
             passed: false,
             message: `Missing template file: .claude/templates/${tmpl}`,
-            fix: `Run 'claude-workstation init --force' to restore missing files`,
+            fix: `Run 'cws init --force' to restore missing files`,
           });
         }
       }
@@ -120,7 +120,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
       message: vaultExists
         ? `Vault directory exists: ${config.vaultPath}/`
         : `Vault directory missing: ${config.vaultPath}/`,
-      fix: "Run 'claude-workstation init' to create vault",
+      fix: "Run 'cws init' to create vault",
     });
 
     if (vaultExists) {
@@ -133,7 +133,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
             name: `vault: ${folder}`,
             passed: false,
             message: `Missing vault folder: ${config.vaultPath}/${folder}/`,
-            fix: "Run 'claude-workstation init' to restore vault structure",
+            fix: "Run 'cws init' to restore vault structure",
           });
         }
       }
@@ -174,7 +174,7 @@ export async function doctorAction(opts: { dir: string }): Promise<void> {
       name: CLAUDE_MD_FILE,
       passed: false,
       message: `Neither ${CLAUDE_MD_FILE} nor ${CLAUDE_EXAMPLE_FILE} found`,
-      fix: "Run 'claude-workstation init' to generate CLAUDE.example.md",
+      fix: "Run 'cws init' to generate CLAUDE.example.md",
     });
   }
 

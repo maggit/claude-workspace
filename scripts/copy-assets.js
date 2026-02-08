@@ -7,7 +7,7 @@
  * Copies: skills/, templates/, profiles/ → packages/cli/assets/
  */
 
-import { cpSync, mkdirSync, rmSync, existsSync } from "node:fs";
+import { cpSync, copyFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -37,6 +37,19 @@ for (const { src, dest } of copies) {
   mkdirSync(destPath, { recursive: true });
   cpSync(srcPath, destPath, { recursive: true });
   console.log(`Copied ${src}/ → packages/cli/assets/${dest}/`);
+}
+
+// Copy README.md and LICENSE to packages/cli/ for npm publish
+const cliDir = resolve(root, "packages/cli");
+for (const file of ["README.md", "LICENSE"]) {
+  const srcPath = resolve(root, file);
+  const destPath = resolve(cliDir, file);
+  if (existsSync(srcPath)) {
+    copyFileSync(srcPath, destPath);
+    console.log(`Copied ${file} → packages/cli/${file}`);
+  } else {
+    console.warn(`Warning: ${file} not found in repo root, skipping`);
+  }
 }
 
 console.log("Asset copy complete.");

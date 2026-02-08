@@ -9,7 +9,7 @@ export function createProgram(): Command {
   const program = new Command();
 
   program
-    .name("claude-workstation")
+    .name("cws")
     .description("Dotfiles for Claude — scaffold Claude workspaces into any project")
     .version(VERSION);
 

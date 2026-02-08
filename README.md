@@ -1,15 +1,15 @@
-# Claude Workstation
+# Claude Workspace
 
 **Dotfiles for Claude** — scaffold a structured AI workspace into any project with one command.
 
-Claude Workstation sets up everything you need to work effectively with Claude: a Markdown knowledge vault, curated skills (promptable playbooks), document templates, and a ready-to-use `CLAUDE.example.md`. It's idempotent, profile-based, and designed for teams and solo builders alike.
+Claude Workspace sets up everything you need to work effectively with Claude: a Markdown knowledge vault, curated skills (promptable playbooks), document templates, and a ready-to-use `CLAUDE.example.md`. It's idempotent, profile-based, and designed for teams and solo builders alike.
 
 ---
 
 ## Quick Start
 
 ```bash
-npx @claude-workstation/cli init
+npx @maggit/claude-workspace init
 ```
 
 That's it. You'll be prompted to pick a profile and vault name, and your workspace is ready.
@@ -17,7 +17,7 @@ That's it. You'll be prompted to pick a profile and vault name, and your workspa
 For non-interactive setup:
 
 ```bash
-npx @claude-workstation/cli init --profile engineering-exec --yes
+npx @maggit/claude-workspace init --profile engineering-exec --yes
 ```
 
 ## What You Get
@@ -55,7 +55,7 @@ your-project/
 
 ## Setting Up CLAUDE.md
 
-Claude Workstation never touches your `CLAUDE.md`. It writes `CLAUDE.example.md` so you stay in control.
+Claude Workspace never touches your `CLAUDE.md`. It writes `CLAUDE.example.md` so you stay in control.
 
 **New project** — rename it:
 
@@ -78,7 +78,7 @@ Profiles determine which skills and templates get installed:
 
 ```bash
 # Use a specific profile
-claude-workstation init --profile marketing
+cws init --profile marketing
 ```
 
 ## Skills
@@ -104,7 +104,7 @@ Skills are Markdown playbooks that teach Claude how to produce specific document
 Scaffold a workspace. Safe to run multiple times — existing files are preserved, unchanged managed files are skipped.
 
 ```bash
-claude-workstation init [options]
+cws init [options]
 ```
 
 | Option | Description | Default |
@@ -121,7 +121,7 @@ claude-workstation init [options]
 Check that your workspace is healthy:
 
 ```bash
-claude-workstation doctor
+cws doctor
 ```
 
 ```
@@ -139,8 +139,8 @@ PASS  CLAUDE.md present
 Install a single skill without running a full `init`:
 
 ```bash
-claude-workstation add-skill prd
-claude-workstation add-skill --list
+cws add-skill prd
+cws add-skill --list
 ```
 
 | Option | Description | Default |
@@ -155,7 +155,7 @@ claude-workstation add-skill --list
 Preview the CLAUDE.md content for a profile without writing any files:
 
 ```bash
-claude-workstation print-claude-md --profile indie-maker
+cws print-claude-md --profile indie-maker
 ```
 
 ## Installation
@@ -163,7 +163,14 @@ claude-workstation print-claude-md --profile indie-maker
 ### npx (recommended)
 
 ```bash
-npx @claude-workstation/cli init
+npx @maggit/claude-workspace init
+```
+
+### Global install
+
+```bash
+npm install -g @maggit/claude-workspace
+cws init
 ```
 
 ### Clone and run
@@ -172,14 +179,7 @@ npx @claude-workstation/cli init
 git clone https://github.com/raquelhernandez/claude-workstation.git
 cd claude-workstation
 pnpm install && pnpm build
-./bin/claude-workstation init --dir ~/my-project
-```
-
-### Global install
-
-```bash
-npm install -g @claude-workstation/cli
-claude-workstation init
+node packages/cli/dist/bin.js init --dir ~/my-project
 ```
 
 ## Idempotency
@@ -204,7 +204,7 @@ See [docs/customization.md](docs/customization.md) for:
 
 ## ContextLoom
 
-Claude Workstation is designed to work with [ContextLoom](https://contextloom.app), a Markdown editor for managing project context. The vault taxonomy and file conventions are fully compatible. See [docs/contextloom.md](docs/contextloom.md) for details.
+Claude Workspace is designed to work with [ContextLoom](https://contextloom.app), a Markdown editor for managing project context. The vault taxonomy and file conventions are fully compatible. See [docs/contextloom.md](docs/contextloom.md) for details.
 
 ## Contributing
 
@@ -220,7 +220,7 @@ Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 ```bash
 pnpm install        # Install dependencies
 pnpm build          # Build (copies assets + compiles TypeScript)
-pnpm test           # Run all tests (44 tests across 6 files)
+pnpm test           # Run all tests
 ```
 
 ## License

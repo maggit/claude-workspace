@@ -85,5 +85,5 @@ export async function initAction(opts: InitOptions): Promise<void> {
   }
 
   console.log("");
-  log.info("Run 'claude-workstation doctor' to verify your workspace.");
+  log.info("Run 'cws doctor' to verify your workspace.");
 }
