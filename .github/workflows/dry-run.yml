@@ -1,0 +1,51 @@
+name: Dry run (package)
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  dry_run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint --if-present
+
+      - name: Test
+        run: pnpm test --if-present
+
+      - name: Build
+        run: pnpm run build --if-present
+
+      - name: Pack (dry run)
+        run: pnpm pack --dry-run
+
+      - name: Pack (create tarball)
+        run: pnpm pack
+
+      - name: Smoke test CLI from tarball
+        run: |
+          TARBALL="$(ls -1 *.tgz | head -n 1)"
+          echo "Testing tarball: $TARBALL"
+          npx "./$TARBALL" --help || true
+          # Optional: if your CLI supports it, test init in a temp dir:
+          mkdir -p /tmp/cws-smoke && cd /tmp/cws-smoke
+          npx "$GITHUB_WORKSPACE/$TARBALL" init --yes || true

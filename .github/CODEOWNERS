@@ -1,0 +1,6 @@
+# Default: you own everything
+* @maggit
+
+# Extra strict: release/publish automation
+.github/workflows/* @maggit
+package.json @maggit
