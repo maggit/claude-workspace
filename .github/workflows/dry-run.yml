@@ -26,14 +26,11 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm run lint --if-present
-
       - name: Test
-        run: pnpm test --if-present
+        run: pnpm test
 
       - name: Build
-        run: pnpm run build --if-present
+        run: pnpm run build
 
       - name: Pack (dry run)
         run: pnpm pack --dry-run
