@@ -16,6 +16,7 @@
     "test": "pnpm -r test",
     "clean": "rm -rf packages/cli/dist packages/cli/assets/skills packages/cli/assets/templates packages/cli/assets/profiles"
   },
+  "packageManager": "pnpm@10.28.2",
   "engines": {
     "node": ">=18"
   }
