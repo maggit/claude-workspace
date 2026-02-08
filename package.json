@@ -8,9 +8,9 @@
   "author": "Raquel Hernandez",
   "repository": {
     "type": "git",
-    "url": "https://github.com/raquelhernandez/claude-workstation.git"
+    "url": "https://github.com/maggit/claude-workspace.git"
   },
-  "homepage": "https://github.com/raquelhernandez/claude-workstation",
+  "homepage": "https://github.com/maggit/claude-workspace",
   "scripts": {
     "build": "node scripts/copy-assets.js && pnpm -r build",
     "test": "pnpm -r test",
