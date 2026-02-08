@@ -1,0 +1,47 @@
+name: Dry run (package)
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  dry_run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Test
+        run: npm test --if-present
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Pack (dry run)
+        run: npm pack --dry-run
+
+      - name: Pack (create tarball)
+        run: npm pack
+
+      - name: Smoke test CLI from tarball
+        run: |
+          TARBALL="$(ls -1 *.tgz | head -n 1)"
+          echo "Testing tarball: $TARBALL"
+          npx "./$TARBALL" --help || true
+          # Optional: if your CLI supports it, test init in a temp dir:
+          mkdir -p /tmp/cws-smoke && cd /tmp/cws-smoke
+          npx "$GITHUB_WORKSPACE/$TARBALL" init --yes || true

@@ -6,8 +6,8 @@ on:
       - "v*.*.*"
 
 permissions:
-  contents: read
-  id-token: write
+  contents: write     # needed to create GitHub Releases
+  id-token: write     # needed for npm Trusted Publisher (OIDC)
 
 jobs:
   publish:
@@ -26,8 +26,16 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Test
+        run: npm test --if-present
+
       - name: Build
         run: npm run build --if-present
 
-      - name: Publish
+      - name: Publish to npm (Trusted Publisher)
         run: npm publish --access public --provenance
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
