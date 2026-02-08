@@ -147,24 +147,63 @@ If you use Claude Code or similar tools, add the following snippet to your proje
 ```md
 ## ContextDB — Project context repository
 
-This project uses a `ContextDB/` directory (managed by ContextLoom) as a local context repository.
+This project uses a `ContextDB/` directory (managed by ContextLoom) as a local context repository. It is the **canonical place** for all long-lived project context.
+
+### Folder Taxonomy
+
+ContextDB/
+├─ README.md          ← ContextDB overview (do not modify)
+├─ 00_index/          ← Entry points, overviews, maps
+├─ 01_specs/          ← Requirements, PRDs, feature specs
+├─ 02_architecture/   ← System design, data flow, components
+├─ 03_decisions/      ← Architecture Decision Records (ADRs), tradeoffs
+├─ 04_knowledge/      ← Reusable concepts & explanations
+├─ 05_prompts/        ← Reusable LLM prompts & system instructions
+├─ 06_agents/         ← Agent roles, rules, memory
+├─ 07_diagrams/       ← Mermaid diagrams (one per file)
+├─ 08_logs/           ← Append-only logs, session summaries, changelogs
+├─ 99_scratch/        ← Drafts, temporary thinking, WIP notes
+└─ todos/             ← TODO lists and task tracking
+
+Numeric prefixes preserve intentional ordering and make traversal predictable.
+
+### Routing — Where to put things
+
+When the user asks you to save, update, or generate context, route to the correct folder:
+
+| User says | Target folder | Example filename |
+|---|---|---|
+| "save/update the PRD", "write a spec", "document requirements" | `01_specs/` | `neuromint-prd.md`, `export-feature-spec.md` |
+| "document the architecture", "explain how X works" | `02_architecture/` | `auth-flow.md`, `ingestion-pipeline.md` |
+| "record this decision", "why did we choose X", "create an ADR" | `03_decisions/` | `2026-02-07-prisma-downgrade.md` |
+| "save this knowledge", "document this pattern" | `04_knowledge/` | `stripe-webhook-patterns.md` |
+| "save this prompt", "store the system prompt", "save latest prompt" | `05_prompts/` | `code-review-prompt.md` |
+| "save agent config", "store agent instructions" | `06_agents/` | `categorization-agent.md` |
+| "create a diagram", "draw this flow" | `07_diagrams/` | `onboarding-flow.mmd.md` |
+| "save a summary", "log this session", "store context", "update context" | `08_logs/` | `2026-02-07-session-summary.md` |
+| "jot this down", "scratch notes", "draft" | `99_scratch/` | `billing-ideas.md` |
+| "create a todo", "track these tasks" | `todos/` | `2026-02-07-refactor-tasks.md` |
+| "update the index", "add an overview" | `00_index/` | `project-map.md` |
 
 ### Reading context
 - Before starting work, check `ContextDB/` for relevant notes, decisions, and specs
 - Read `ContextDB/README.md` to understand folder structure and conventions
+- Check `00_index/` for project maps and entry points
+- Check for existing files before creating new ones (prefer appending)
 
 ### Writing context
-- When documenting decisions, summaries, TODOs, or specs, write `.md` files inside `ContextDB/`
-- Prefer existing folders that match intent (specs, decisions, knowledge, etc.)
-- Use descriptive filenames (date-prefix when relevant)
+- Route files to the correct taxonomy folder (see table above)
+- Use descriptive filenames — date-prefix when chronology matters: `2026-02-07-auth-decision.md`
 - Always **append** to existing files rather than overwriting, unless explicitly instructed
 - Do **not** delete files without explicit user permission
+- Create taxonomy folders on first use if they don't exist yet
 
 ### Conventions
 - Plain Markdown only (`.md`)
 - Include a `# Title` heading in every file
-- Use relative links to reference other files
-- Do not create files outside `ContextDB/` without permission
+- Use relative links to reference other files: `[see spec](../01_specs/export-spec.md)`
+- Prefer **small, composable files** over large monoliths
+- Do not create files outside `ContextDB/` without user permission
 ```
 
 This tells Claude Code to treat ContextDB as the **canonical place** for long-lived context.
