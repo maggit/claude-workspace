@@ -13,29 +13,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
           registry-url: "https://registry.npmjs.org"
 
       - name: Install
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint --if-present
+        run: pnpm run lint --if-present
 
       - name: Test
-        run: npm test --if-present
+        run: pnpm test --if-present
 
       - name: Build
-        run: npm run build --if-present
+        run: pnpm run build --if-present
 
       - name: Pack (dry run)
-        run: npm pack --dry-run
+        run: pnpm pack --dry-run
 
       - name: Pack (create tarball)
-        run: npm pack
+        run: pnpm pack
 
       - name: Smoke test CLI from tarball
         run: |
