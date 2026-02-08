@@ -1,6 +1,6 @@
 {
   "name": "@maggit/claude-workspace",
-  "version": "0.2.1",
+  "version": "1.0.2",
   "description": "CLI tool to scaffold Claude workspaces into any project",
   "type": "module",
   "license": "MIT",
