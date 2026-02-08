@@ -37,6 +37,7 @@ jobs:
         run: pnpm test
 
       - name: Publish to npm (Trusted Publisher)
+        working-directory: packages/cli
         run: npm publish --access public --provenance
 
       - name: Create GitHub Release
