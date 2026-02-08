@@ -60,6 +60,7 @@ node packages/cli/dist/bin.js print-claude-md --profile default
 | Command | Purpose |
 |---------|---------|
 | `init` | Scaffold workspace (skills, templates, vault, CLAUDE.example.md) |
+| `add-skill` | Install a single skill (with `--list`, `--force`, `--dry-run`) |
 | `doctor` | Verify workspace health (files, config, hashes) |
 | `print-claude-md` | Preview CLAUDE.md content for a profile |
 
@@ -74,6 +75,7 @@ Key services:
 - `claude-md.ts` — generate CLAUDE.md content from templates
 - `config.ts` — read/write `.claude/config.json`
 - `active-profile.ts` — idempotency via `.claude/profiles/active.json`
+- `skills.ts` — list, validate, and parse available skills
 
 ## Skills
 
@@ -102,13 +104,13 @@ When adding a profile:
 
 ## Idempotency
 
-Init tracks SHA-256 hashes of all managed files in `.claude/profiles/active.json`. Re-running init skips unmodified files, warns on user-modified files, and supports `--force` (with `.bak` backup).
+Init tracks SHA-256 hashes of all managed files in `.claude/profiles/active.json`. Re-running init skips unmodified files, warns on user-modified files, and supports `--force` (with `.bak` backup). Existing files not tracked by the CLI (unmanaged) are skipped with a warning to prevent overwriting user-created content.
 
 `CLAUDE.example.md` is always written — never overwrites an existing `CLAUDE.md`.
 
 ## Testing
 
-- 6 test files, 44+ tests in `packages/cli/src/__tests__/`
+- 7 test files, 55+ tests in `packages/cli/src/__tests__/`
 - Framework: Vitest with 30s timeout
 - Tests use temp directories, cleaned per test
 - Coverage: idempotency, file preservation, dry-run, profiles, scaffold flow

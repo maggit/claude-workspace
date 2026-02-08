@@ -34,6 +34,13 @@ export interface InitOptions {
   yes: boolean;
 }
 
+export interface AddSkillOptions {
+  dir: string;
+  force: boolean;
+  dryRun: boolean;
+  list: boolean;
+}
+
 export interface DoctorCheck {
   name: string;
   passed: boolean;

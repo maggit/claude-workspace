@@ -28,8 +28,8 @@ your-project/
 ├── .claude/
 │   ├── config.json                # Workspace configuration
 │   ├── skills/                    # Promptable mini-playbooks
-│   │   ├── prd.md
-│   │   ├── eng-spec.md
+│   │   ├── prd/SKILL.md
+│   │   ├── eng-spec/SKILL.md
 │   │   └── ...
 │   ├── templates/                 # Document templates
 │   │   ├── PRD_TEMPLATE.md
@@ -134,6 +134,22 @@ PASS  All 9 vault subfolders present
 PASS  CLAUDE.md present
 ```
 
+### `add-skill`
+
+Install a single skill without running a full `init`:
+
+```bash
+claude-workstation add-skill prd
+claude-workstation add-skill --list
+```
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `-d, --dir <path>` | Target directory | `.` |
+| `--force` | Overwrite existing skill (backs up first) | `false` |
+| `--dry-run` | Preview what would happen | `false` |
+| `-l, --list` | List all available skills | `false` |
+
 ### `print-claude-md`
 
 Preview the CLAUDE.md content for a profile without writing any files:
@@ -172,6 +188,7 @@ Running `init` again is always safe:
 
 - **Managed files** (skills, templates) are tracked by SHA-256 hash. If the file hasn't changed, it's skipped.
 - **User-modified files** are detected and preserved. Use `--force` to overwrite (a `.bak` backup is created first).
+- **Unmanaged files** (existing skills not tracked by the CLI) are skipped with a warning. Use `--force` to overwrite, or delete them and re-run.
 - **CLAUDE.example.md** is regenerated on each run — it's the reference file, not your working file.
 - **Vault folders** are created if missing, never deleted.
 

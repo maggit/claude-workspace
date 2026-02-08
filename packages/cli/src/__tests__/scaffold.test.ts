@@ -96,6 +96,64 @@ describe("scaffold-claude-dir", () => {
     );
   });
 
+  it("skips existing unmanaged skill (returns null, preserves user content)", async () => {
+    const profile = await loadProfile("default");
+
+    // Manually create an unmanaged skill before running init
+    const customDir = path.join(tmpDir, ".claude", "skills", "prd");
+    await fs.ensureDir(customDir);
+    await fs.writeFile(path.join(customDir, "SKILL.md"), "# My custom PRD\n");
+
+    // Run scaffold with no existing active profile (nothing tracked)
+    const result = await scaffoldClaudeDir(
+      tmpDir,
+      profile,
+      { force: false, dryRun: false },
+      null,
+    );
+
+    // prd should NOT be in managed files (was skipped)
+    const prdEntry = result.managedFiles.find((mf) =>
+      mf.path.includes("prd"),
+    );
+    expect(prdEntry).toBeUndefined();
+
+    // Custom content should be preserved
+    const content = await fs.readFile(path.join(customDir, "SKILL.md"), "utf-8");
+    expect(content).toBe("# My custom PRD\n");
+
+    // Other skills should still be installed
+    expect(result.managedFiles.length).toBe(
+      profile.skills.length + profile.templates.length - 1,
+    );
+  });
+
+  it("overwrites unmanaged skill with --force", async () => {
+    const profile = await loadProfile("default");
+
+    // Manually create an unmanaged skill
+    const customDir = path.join(tmpDir, ".claude", "skills", "prd");
+    await fs.ensureDir(customDir);
+    await fs.writeFile(path.join(customDir, "SKILL.md"), "# My custom PRD\n");
+
+    const result = await scaffoldClaudeDir(
+      tmpDir,
+      profile,
+      { force: true, dryRun: false },
+      null,
+    );
+
+    // prd should now be in managed files
+    const prdEntry = result.managedFiles.find((mf) =>
+      mf.path.includes("prd"),
+    );
+    expect(prdEntry).toBeDefined();
+
+    // Content should now be the CLI's version
+    const content = await fs.readFile(path.join(customDir, "SKILL.md"), "utf-8");
+    expect(content).toContain("Product Requirements Document");
+  });
+
   it("only installs profile-specific skills", async () => {
     const profile = await loadProfile("marketing");
     await scaffoldClaudeDir(tmpDir, profile, { force: false, dryRun: false }, null);
